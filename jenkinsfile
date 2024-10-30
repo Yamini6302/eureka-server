@@ -22,7 +22,8 @@ pipeline {
          
            stage('Deploy') {
             steps {
-		"
+		bat "docker rm eureka-server"
+		bat "docker rmi eureka-server"
                 echo 'Deploy done'
                  bat "docker build -t eureka-server ."
 			             bat "docker run -p 8762:8762 -d --name eureka-server eureka-server"
